@@ -10,15 +10,15 @@
         <?php
         // put your code here
         ?>
-
+<?php //table and color format****** ?>
         <table border="1">
-            <?php for ($tr = 1; $tr <= 7; $tr++): ?>
+            <?php for ($tr = 1; $tr <= 10; $tr++): ?>
                 <tr> 
-                    <?php for ($td = 1; $td <= 7; $td++): ?>
+                    <?php for ($td = 1; $td <= 10; $td++): ?>
                         <?php $randColor = '#' . strtoupper(dechex(rand(0x000000, 0xFFFFFF))); ?>
                         <td style="background-color: <?php echo $randColor; ?>"> 
-
-                            <?php echo $randColor; ?>  <span  style="color: white;"> <?php echo $randColor; ?></span>;  
+<?php //randColor selecion***** ?>
+                            <?php echo $randColor; ?>  <span  style="color: white;"> <?php echo $randColor; ?></span> 
                         </td>
                     <?php endfor; ?>                
                 </tr>
