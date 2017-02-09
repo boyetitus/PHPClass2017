@@ -8,45 +8,41 @@ function isPostRequest() {
     return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
 }
 /* *
- * Creates a new row at bottom of the sex Table.
+ * Creates a new row at bottom of the corps Table.
  * 
  * @return Boolean
  */
-function createCorpData($company, $address, $city, $state, $phone, $zipcode, $email, $enroll, $fullname) {
+function createCorpData($corp, $incorp_dt, $email, $zipcode, $owner, $phone) {
     $result = false;
     
     $db = getDatabase();
     
-    $stmt = $db->prepare("INSERT INTO sex SET company = :company, address = :address, city = :city, state = :state, phone = :phone, zipcode = :zipcode,  email = :email, enroll = :enroll, fullname = :fullname");
+    $stmt = $db->prepare("INSERT INTO corps SET corp = :corp, incorp_dt = :incorp_dt, email = :email, zipcode = :zipcode, owner = :owner, phone = :phone");
     
     $binds = array(
-        ":company"    => $company,
-        ":address"    => $address,
-        ":city"    => $city,
-        ":state"    => $state,
-        ":phone"    => $phone,
-        ":zipcode"    => $zipcode,
+        ":corp"    => $corp,
+        ":incorp_dt" => $incorp_dt,
         ":email"   => $email,
-        ":enroll" => $enroll,
-        ":fullname"   => $fullname,
-       
+        ":zipcode" => $zipcode,
+        ":owner"   => $owner,
+        ":phone"   => $phone
     );
     
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-        $result = true;
+        $results = true;
     }
     
     return $result;
 }
 /**
- * Retreives ALL ROWS from sex Table
+ * Retreives ALL ROWS from corps Table
  * 
  * @return String
  */
 function viewAllFromCorps() {
     $db = getDatabase();
     
-    $stmt = $db->prepare("SELECT * FROM sex");
+    $stmt = $db->prepare("SELECT * FROM corps");
     
     $results = array();
     if ($stmt->execute() && $stmt->rowCount() > 0) {
@@ -56,14 +52,14 @@ function viewAllFromCorps() {
     return $results;
 }
 /**
- * Retreives a SINGLE ROW from sex Table
+ * Retreives a SINGLE ROW from corps Table
  * 
  * @return String
  */
 function viewOneFromCorps($id) {
     $db = getDatabase();
     
-    $stmt = $db->prepare("SELECT * FROM sex WHERE id = :id");
+    $stmt = $db->prepare("SELECT * FROM corps WHERE id = :id");
     
     $binds = array(
         ":id" => $id
@@ -77,7 +73,7 @@ function viewOneFromCorps($id) {
     return $result;
 }
 /**
- * Deletes a new row from the sex Table.
+ * Deletes a new row from the corps Table.
  * 
  * @return Boolean
  */
@@ -86,7 +82,7 @@ function deleteFromCorps($id) {
     
     $db = getDatabase();
     
-    $stmt = $db->prepare("DELETE FROM sex WHERE id = :id");
+    $stmt = $db->prepare("DELETE FROM corps WHERE id = :id");
     
     $binds = array(
         ":id" => $id
@@ -99,28 +95,25 @@ function deleteFromCorps($id) {
     return $isDeleted;
 }
 /**
- * Updates a specified row from sex table
+ * Updates a specified row from corps table
  * 
  * @return Boolean
  */
-function updateCorpsRow($id, $company, $address, $city, $state, $phone, $zipcode, $email, $enroll, $fullname) {
+function updateCorpsRow($id, $corp, $incorp_dt, $email, $zipcode, $owner, $phone) {
     $result = false;
     
     $db = getDatabase();
     
-    $stmt = $db->prepare("UPDATE sex SET company = :company, address = :address, city = :city, state = :state, phone = :phone, zipcode = :zipcode, email = :email, enroll = :enroll, fullname = :fullname WHERE id = :id");
+    $stmt = $db->prepare("UPDATE corps SET corp = :corp, incorp_dt = :incorp_dt, email = :email, zipcode = :zipcode, owner = :owner, phone = :phone WHERE id = :id");
     
     $binds = array(
         ":id"      => $id,
-        ":company"    => $company,
-        ":address"    => $address,
-        ":city"    => $city,
-        ":state"    => $state,
-        ":phone"   => $phone,
+        ":corp"    => $corp,
+        ":incorp_dt" => $incorp_dt,
+        ":email"   => $email,
         ":zipcode" => $zipcode,
-        ":email" => $email,
-        ":enroll"   => $enroll,
-        ":fullname"   => $fullname,
+        ":owner"   => $owner,
+        ":phone"   => $phone
     );
     
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {

@@ -32,7 +32,7 @@
                 <?php foreach ($results as $row): ?>
                     <tr bgcolor="#FFB6C1">
                         <td><?php echo $row['id']; ?></td>
-                        <td><?php echo $row['company']; ?></td>
+                        <td><?php echo $row['corp']; ?></td>
                         <!-- Read, Update, Delete Buttons -->
                         <td><a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-info">Delete</a></td>
                         <td><a href="update.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a></td>  

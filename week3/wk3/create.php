@@ -35,16 +35,13 @@
         $results = '';
         if (isPostRequest()) {
             
-            $company    = filter_input(INPUT_POST, 'company');
-            $address    = filter_input(INPUT_POST, 'address');
-            $city    = filter_input(INPUT_POST, 'city');
-            $state    = filter_input(INPUT_POST, 'state');
-            $phone   = filter_input(INPUT_POST, 'phone');
-            $zipcode = filter_input(INPUT_POST, 'zipcode');
+            $corp    = filter_input(INPUT_POST, 'corp');
+            $incorp_dt = filter_input(INPUT_POST, 'incorp_dt');
             $email   = filter_input(INPUT_POST, 'email');
-            $enroll = filter_input(INPUT_POST, 'enroll');
-            $fullname   = filter_input(INPUT_POST, 'fullname');
-            $confirm = createCorpData($company, $address, $city, $state, $phone, $zipcode, $email, $enroll, $fullname);
+            $zipcode = filter_input(INPUT_POST, 'zipcode');
+            $owner   = filter_input(INPUT_POST, 'owner');
+            $phone   = filter_input(INPUT_POST, 'phone');
+            $confirm = createCorpData($corp, $incorp_dt, $email, $zipcode, $owner, $phone);
             
             if ( $confirm === false ) {
                 $results = 'Company Not Added';
@@ -59,31 +56,22 @@
 
             <form method="post" action="#">
                 <div class="form-group">
-                    Company <input type="text" value="" name="company" class="form-control" />
+                    Company <input type="text" value="" name="corp" class="form-control" />
                 </div><br />
                 <div class="form-group">
-                    Address <input type="text" value="" name="address" class="form-control" />
-                </div><br />
-                <div class="form-group">
-                    City <input type="text" value="" name="city" class="form-control" />
-                </div><br />
-                <div class="form-group">
-                    State <input type="text" value="" name="state" class="form-control" />
-                </div><br />
-                <div class="form-group">
-                    Phone <input type="text" value="" name="phone" class="form-control" />
-                </div><br />
-                <div class="form-group">
-                    Zip <input type="text" value="" name="zipcode" class="form-control" />
+                    Enroll <input type="date" value="" name="incorp_dt" class="form-control" />
                 </div><br />
                 <div class="form-group">
                     Email <input type="text" value="" name="email" class="form-control" />
                 </div><br />
                 <div class="form-group">
-                    Enroll <input type="date" value="" name="enroll" class="form-control" />
+                    Zip <input type="text" value="" name="zipcode" class="form-control" />
                 </div><br />
                 <div class="form-group">
-                    Full Name <input type="text" value="" name="fullname" class="form-control" />
+                    Owner <input type="text" value="" name="owner" class="form-control" />
+                </div><br />
+                <div class="form-group">
+                    Phone <input type="text" value="" name="phone" class="form-control" />
                 </div><br />
                 
                 <div class="form-group">

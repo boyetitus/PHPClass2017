@@ -43,14 +43,11 @@
                     <tr bgcolor="#ADD8E6">
                         <th>ID</th>
                         <th>Company Name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Phone</th>
+                        <th>Enroll</th>
+                        <th>Email Address</th>
                         <th>Zip Code</th>
-                        <th>Email</th>
-                        <th>Enroll Date</th>
-                        <th>Full Name</th>
+                        <th>Owner</th>
+                        <th>Phone</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -58,16 +55,13 @@
                 <tbody>
                     <tr bgcolor="#A9A9A9">
                         <td><?php echo $result['id']; ?></td>
-                        <td><?php echo $result['company']; ?></td>    
-                        <td><?php echo $result['address']; ?></td> 
-                        <td><?php echo $result['city']; ?></td> 
-                        <td><?php echo $result['state']; ?></td> 
-                        <td><?php echo $result['phone']; ?></td> 
-                        <td><?php echo $result['zipcode']; ?></td> 
+                        <td><?php echo $result['corp']; ?></td>    
+                        <td><?php echo $result['incorp_dt']; ?></td> 
                         <td><?php echo $result['email']; ?></td> 
-                        <td><?php echo $result['enroll']; ?></td>  
-                        <td><?php echo $result['fullname']; ?></td>        
-            
+                        <td><?php echo $result['zipcode']; ?></td> 
+                        <td><?php echo $result['owner']; ?></td> 
+                        <td><?php echo $result['phone']; ?></td> 
+                              
                         <!-- Update & Delete Buttons -->
                         <td><a href="update.php?id=<?php echo $result['id']; ?>" class="btn btn-warning" role="button">Update</a></td>            
                         <td><a href="delete.php?id=<?php echo $result['id']; ?>" class="btn btn-danger" role="button">Delete</a></td>             

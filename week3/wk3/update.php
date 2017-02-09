@@ -35,19 +35,14 @@
             $result = '';
             if (isPostRequest()) {
             $id      = filter_input(INPUT_POST, 'id');
-            $company    = filter_input(INPUT_POST, 'company');
-            $address    = filter_input(INPUT_POST, 'address');
-            $city    = filter_input(INPUT_POST, 'city');
-            $state    = filter_input(INPUT_POST, 'state');
-            $phone   = filter_input(INPUT_POST, 'phone');
-            $zipcode = filter_input(INPUT_POST, 'zipcode');
+            $corp    = filter_input(INPUT_POST, 'corp');
+            $incorp_dt    = filter_input(INPUT_POST, 'incorp_dt');
             $email   = filter_input(INPUT_POST, 'email');
-            $enroll = filter_input(INPUT_POST, 'enroll');
-            $fullname   = filter_input(INPUT_POST, 'fullname');
+            $zipcode    = filter_input(INPUT_POST, 'zipcode');
+            $owner    = filter_input(INPUT_POST, 'owner');
+            $phone   = filter_input(INPUT_POST, 'phone');
                 
-            
-                
-            $updated = updateCorpsRow($id, $company, $address, $city, $state, $phone, $zipcode, $email, $enroll, $fullname);
+            $updated = updateCorpsRow($id, $corp, $incorp_dt, $email, $zipcode, $owner, $phone);
             if ($updated === true) {
             $result = 'Record updated';
             } else {
@@ -62,15 +57,13 @@
                 }
                 
                 $row     = viewOneFromCorps($id);
-                $company    = $row['company'];
-                $address    = $row['address'];
-                $city    = $row['city'];
-                $state   = $row['state'];
-                $phone    = $row['phone'];
-                $zipcode    = $row['zipcode'];
+                $corp    = $row['corp'];
+                $incorp_dt    = $row['incorp_dt'];
                 $email    = $row['email'];
-                $enroll = $row['enroll'];
-                $fullname   = $row['fullname'];       
+                $zipcode   = $row['zipcode'];
+                $owner    = $row['owner'];
+                $phone    = $row['phone'];
+                     
             }
         
         ?>
@@ -79,33 +72,24 @@
 
             <form method="post" action="#">   
                 <div class="form-group">
-                    Company Name <input type="text" value="<?php echo $company; ?>" name="company" class="form-control" />
+                    Company Name <input type="text" value="<?php echo $corp; ?>" name="corp" class="form-control" />
                 </div><br />
                 <div class="form-group">
-                    Address <input type="text" value="<?php echo $address; ?>" name="address" class="form-control" />
+                    Enrolled Date <input type="date" value="<?php echo $incorp_dt; ?>" name="incorp_dt" class="form-control" />
                 </div><br />
                 <div class="form-group">
-                    City <input type="text" value="<?php echo $city; ?>" name="city" class="form-control" />
-                </div><br />
-                <div class="form-group">
-                    State <input type="text" value="<?php echo $state; ?>" name="state" class="form-control" />
-                </div><br />
-                <div class="form-group">
-                   Phone <input type="text" value="<?php echo $phone; ?>" name="phone" class="form-control" />
+                    Email <input type="text" value="<?php echo $email; ?>" name="email" class="form-control" />
                 </div><br />
                 <div class="form-group">
                     Zip Code <input type="text" value="<?php echo $zipcode; ?>" name="zipcode" class="form-control" />
                 </div><br />
                 <div class="form-group">
-                    Email <input type="text" value="<?php echo $email; ?>" name="email" class="form-control" />
-                </div><br />  
-                <div class="form-group">
-                    Enrolled Date <input type="date" value="<?php echo $enroll; ?>" name="enroll" class="form-control" />
-                </div><br /> 
-                <div class="form-group">
-                    Full Name <input type="text" value="<?php echo $fullname; ?>" name="fullname" class="form-control" />
+                    Owner <input type="text" value="<?php echo $owner; ?>" name="owner" class="form-control" />
                 </div><br />
-               
+                <div class="form-group">
+                   Phone <input type="text" value="<?php echo $phone; ?>" name="phone" class="form-control" />
+                </div><br />
+        
                 <div class="form-group">
                     <input type="hidden" value="<?php echo $id; ?>" name="id" /> 
                     <input type="submit" value="Update" class="btn btn-primary form-control" />
